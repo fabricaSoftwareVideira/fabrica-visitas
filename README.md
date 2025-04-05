@@ -29,3 +29,4 @@ As histórias de usuário a seguir foram elaboradas para atender às necessidade
 - A interface é responsiva e funciona em dispositivos iOS e Android
 
 **Prioridade:** Alta
+
