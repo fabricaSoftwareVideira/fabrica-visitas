@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,7 @@
       display: flex;
       flex-direction: column;
     }
+
     nav {
       background-color: #007e3a;
       padding: 1rem;
@@ -21,9 +23,11 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
+
     main {
       flex: 1;
     }
+
     .form-container {
       max-width: 500px;
       margin: 3rem auto;
@@ -33,13 +37,16 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
+
     #camera-wrapper {
       position: relative;
       width: 200px;
       height: 200px;
       margin: 0 auto 1rem auto;
     }
-    #camera-preview, #captured-photo {
+
+    #camera-preview,
+    #captured-photo {
       position: absolute;
       top: 0;
       left: 0;
@@ -48,19 +55,30 @@
       border-radius: 50%;
       object-fit: cover;
     }
+
     #canvas {
       display: none;
     }
+
     #check-icon {
       font-size: 4rem;
       color: green;
       display: none;
       animation: pop 0.5s ease-in-out forwards;
     }
+
     @keyframes pop {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
+
     footer {
       background-color: #007e3a;
       color: white;
@@ -74,19 +92,23 @@
         margin: 1.5rem 1rem;
         padding: 1.5rem;
       }
+
       #camera-wrapper {
         width: 150px;
         height: 150px;
       }
+
       #camera-preview,
       #captured-photo {
         width: 150px;
         height: 150px;
       }
+
       nav {
         font-size: 1.2rem;
         padding: 0.75rem;
       }
+
       footer {
         font-size: 0.9rem;
         padding: 0.8rem;
@@ -94,6 +116,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav>Formulário de Visitas na Fábrica de Software</nav>
   <main>
@@ -125,7 +148,8 @@
       </form>
 
       <div class="progress mt-3" style="display: none;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%">
+        </div>
       </div>
       <div id="check-icon" class="mt-3">✅</div>
       <div id="success-message" class="text-success mt-2 fw-bold" style="display: none;">
@@ -193,38 +217,60 @@
       retakeBtn.style.display = 'none';
     };
 
-    document.getElementById('visit-form').onsubmit = function(e) {
+    document.getElementById('visit-form').onsubmit = async function (e) {
       e.preventDefault();
 
       const nome = document.getElementById('nome').value.trim();
       const email = document.getElementById('email').value.trim();
+      const empresa = document.getElementById('empresa').value.trim();
+      const motivo = document.getElementById('motivo').value.trim();
+      const foto = photo.src;
 
-      if (!nome || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Por favor, preencha um nome válido e um e-mail válido.');
+      if (!nome || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !foto) {
+        alert('Por favor, preencha os campos obrigatórios e tire uma foto.');
         return;
       }
 
-      submitBtn.style.display = 'none';
+      submitBtn.disabled = true;
       document.querySelector('.progress').style.display = 'block';
 
-      setTimeout(() => {
-        document.querySelector('.progress').style.display = 'none';
-        document.getElementById('check-icon').style.display = 'block';
-        document.getElementById('success-message').style.display = 'block';
-        document.getElementById('countdown').style.display = 'block';
+      try {
+        const response = await fetch('salvar_visita.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, email, empresa, motivo, foto })
+        });
 
-        let seconds = 8;
-        const countdownEl = document.getElementById('seconds');
-        const interval = setInterval(() => {
-          seconds--;
-          countdownEl.textContent = seconds;
-          if (seconds === 0) {
-            clearInterval(interval);
-            location.reload();
-          }
-        }, 1000);
-      }, 2000);
+        const result = await response.json();
+
+        document.querySelector('.progress').style.display = 'none';
+
+        if (result.success) {
+          document.getElementById('check-icon').style.display = 'block';
+          document.getElementById('success-message').style.display = 'block';
+          document.getElementById('countdown').style.display = 'block';
+
+          let seconds = 8;
+          const countdownEl = document.getElementById('seconds');
+          const interval = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds;
+            if (seconds === 0) {
+              clearInterval(interval);
+              location.reload();
+            }
+          }, 1000);
+        } else {
+          alert('Erro ao registrar visita: ' + result.message);
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        alert('Erro na requisição: ' + err.message);
+        submitBtn.disabled = false;
+        document.querySelector('.progress').style.display = 'none';
+      }
     };
   </script>
 </body>
+
 </html>
