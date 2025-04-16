@@ -1,12 +1,9 @@
-CREATE DATABASE IF NOT EXISTS visitas_fabrica;
-USE visitas_fabrica;
-
 CREATE TABLE visitas (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   empresa VARCHAR(100),
   motivo TEXT,
-  foto LONGBLOB, -- a imagem capturada em base64 convertida para blob
+  foto_base64 TEXT, -- imagem capturada em base64
   data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
