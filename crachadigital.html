@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crachá Digital</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: #f5f8fa;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      width: 300px;
+      text-align: center;
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem auto;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .card h3 {
+        font-size: 1.8rem;
+      }
+
+      .card p {
+        font-size: 1.2rem;
+      }
+
+      .card {
+        width: 80%;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img id="profile-photo" src="" alt="Foto do visitante" />
+    <h3 id="visitor-name">Nome do Visitante</h3>
+    <p id="visitor-company">Empresa: <span id="company-name">Nome da Empresa</span></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Receber os parâmetros da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const nome = urlParams.get('nome');
+      const empresa = urlParams.get('empresa');
+      const foto = urlParams.get('foto');
+
+      // Definir os valores dinamicamente
+      document.getElementById("visitor-name").innerText = nome || "Nome não disponível";
+      document.getElementById("company-name").innerText = empresa || "Não informado";
+
+      // Definir a foto
+      const profilePhoto = document.getElementById("profile-photo");
+      if (foto) {
+        profilePhoto.src = foto;
+      } else {
+        profilePhoto.src = "https://via.placeholder.com/150"; // Foto padrão se não houver base64
+      }
+    });
+  </script>
+</body>
+
+</html>
