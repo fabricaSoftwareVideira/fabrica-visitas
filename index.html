@@ -181,6 +181,10 @@
           </button>
         </form>
 
+        <button id="generate-btn" onclick="gerarCracha();" class="btn btn-primary w-100 mt-3">
+          Gerar Crachá Digital
+        </button>
+
         <div class="progress mt-3" style="display: none">
           <div
             class="progress-bar progress-bar-striped progress-bar-animated"
@@ -209,7 +213,6 @@
 
     <!-- Seu script principal -->
     <script>
-
       document.addEventListener("DOMContentLoaded", () => {
         const supabaseUrl = "https://qwuhisepmwkcfszuhihj.supabase.co";
         const supabaseKey =
@@ -344,7 +347,27 @@
         };
       });
 
-      
+      function gerarCracha() {
+        // Pega os valores dos inputs
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        let empresa = document.getElementById("empresa").value.trim();
+
+        // Verifica se empresa está vazia
+        if (!empresa) {
+          empresa = "Não informado";
+        }
+
+        // Codifica os parâmetros para URL
+        const params = new URLSearchParams({
+          nome: nome,
+          email: email,
+          empresa: empresa,
+        });
+
+        // Abre nova página com os parâmetros
+        window.open("crachadigital.html?" + params.toString(), "_blank");
+      }
     </script>
   </body>
 </html>
