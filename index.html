@@ -149,6 +149,7 @@
               class="form-control"
               id="nome"
               placeholder="Nome *"
+              autocomplete="off"
               required
             />
           </div>
@@ -166,6 +167,7 @@
               type="text"
               class="form-control"
               id="empresa"
+              autocomplete="off"
               placeholder="Empresa (opcional)"
             />
           </div>
@@ -180,10 +182,6 @@
             Confirmar Visita
           </button>
         </form>
-
-        <button id="generate-btn" onclick="gerarCracha();" class="btn btn-primary w-100 mt-3">
-          Gerar Crachá Digital
-        </button>
 
         <div class="progress mt-3" style="display: none">
           <div
@@ -201,8 +199,12 @@
           Visita registrada com sucesso!
         </div>
         <div id="countdown" class="text-muted mt-1" style="display: none">
-          A página vai se recarregar em <span id="seconds">8</span> segundos...
+          A página vai se recarregar em <span id="seconds">20</span> segundos...
+          <button id="generate-btn" onclick="gerarCracha();" class="btn btn-primary w-100 mt-3">
+            Gerar Crachá Digital
+          </button>
         </div>
+        
       </div>
     </main>
 
