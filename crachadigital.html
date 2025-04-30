@@ -131,7 +131,19 @@
         }
 
         const img = document.getElementById("foto");
-        img.src = fotoBase64;
+
+        if (!fotoBase64 || fotoBase64 === "null" || fotoBase64.length < 100) {
+          // Se não tiver imagem válida, exibe o ícone padrão
+          img.src =
+            "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/person-circle.svg";
+        } else {
+          // Se a imagem não tiver prefixo, adiciona
+          if (!fotoBase64.startsWith("data:image")) {
+            fotoBase64 = `data:image/jpeg;base64,${fotoBase64}`;
+          }
+          img.src = fotoBase64;
+        }
+
         img.style.display = "block";
 
         console.log("✅ Foto exibida com sucesso.");
