@@ -5,7 +5,7 @@
   
   body {
     margin: 0;
-    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    background: linear-gradient(135deg, #2899ad, #0a282d);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@
     max-width: 400px;
     width: 100%;
     text-align: center;
-    border: 2px solid #00acc1;
+    border: 2px solid #0a282d;
   }
   
   .foto {
@@ -30,7 +30,7 @@
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #00acc1;
+    border: 5px solid #0a282d;
     margin: 0 auto 1.5rem;
     display: none;
   }
@@ -38,13 +38,13 @@
   .cracha h1 {
     margin: 0.3 0.5rem;
     font-size: 1.8rem;
-    color: #007c91;
+    color: #0a282d;
   }
   
   .cracha p {
     margin: 0.3rem 0;
     font-size: 1rem;
-    color: #004d40;
+    color: #0a282d;
   }
   
   @media (max-width: 500px) {
