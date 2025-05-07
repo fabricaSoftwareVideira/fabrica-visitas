@@ -58,22 +58,6 @@ A última página (`cracha.html`) exibe o crachá digital do visitante, com as i
 - Cabeçalho com o título "VISITANTE".
 - Exibição da foto, nome, e-mail e empresa do visitante.
 
-## Arquivos de Estilo
-
-O projeto utiliza três arquivos CSS principais, sendo:
-
-- **`style.css`**: Estiliza a página inicial de acesso.
-- **`formulario.css`**: Estiliza a página de formulário de visita.
-- **`cracha.css`**: Estiliza o crachá digital.
-
-## Scripts JavaScript
-
-O projeto também inclui três arquivos JavaScript principais:
-
-- **`script.js`**: Controla a lógica de acesso à página de cadastro de visita e a verificação de localização.
-- **`formulario.js`**: Controla a captura da foto, a validação do formulário e o envio das informações.
-- **`cracha.js`**: Gerencia a exibição dos dados no crachá digital.
-
 ## Como Usar
 
 1. **Abra a página inicial** (`index.html`).
