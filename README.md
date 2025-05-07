@@ -1,32 +1,99 @@
-## Aplicativo para Registro de Visitas na Fábrica de Software
+# Sistema de Cadastro de Visita - Fábrica de Software
 
-O objetivo deste projeto é desenvolver um aplicativo web para registro de visitas na fábrica de software do Instituto Federal Catarinense, campus Videira.
+Este projeto consiste em um sistema de cadastro de visita na Fábrica de Software. O objetivo principal é permitir que visitantes se registrem através de um formulário, capturem uma foto e, em seguida, gerem um crachá digital com seus dados.
 
-### **Histórias de Usuário**
+## Estrutura do Projeto
 
-As histórias de usuário a seguir foram elaboradas para atender às necessidades dos visitantes e administradores da fábrica de software, visando garantir um processo de registro de visitas eficiente, seguro e amigável.
+A estrutura do projeto é composta por três páginas principais:
 
-### **História 1: Registrar visita via QR Code**
+1. **Página de Acesso Inicial** (Cadastro de Visita)
+2. **Formulário de Visita**
+3. **Crachá Digital**
 
-**Título:** Como visitante, quero escanear um QR Code para iniciar o processo de registro de visita na fábrica de software
+### 1. Página de Acesso Inicial (Cadastro de Visita)
 
-**Descrição:** O visitante deve poder utilizar seu próprio dispositivo móvel para iniciar o processo de registro através de um QR Code disponibilizado na entrada da fábrica, proporcionando uma experiência rápida e sem contato.
+A primeira página (`index.html`) é responsável por fornecer um botão para o visitante realizar o cadastro. Quando o visitante clica no botão, o sistema verifica se ele está em uma localização permitida e se a permissão de câmera foi concedida.
 
-**Critérios de Aceitação:**
+- **Localização**: A página verifica a localização geográfica do visitante e restringe o acesso caso ele não esteja dentro do raio de 100 metros.
+- **Permissões de Câmera**: A página também solicita permissão para acessar a câmera do dispositivo do visitante.
 
-- Ao escanear o QR Code com qualquer aplicativo de leitura, o visitante é direcionado para a aplicação web de registro
-- A aplicação solicita permissão para acessar a câmera e a localização do dispositivo
-- É exibido um formulário intuitivo com campos obrigatórios (nome e e-mail) e opcionais (empresa, motivo da visita)
-- O visitante pode capturar sua foto através da câmera frontal do dispositivo, com prévia antes de confirmar
-- O sistema valida os dados inseridos antes de enviar (formato de e-mail válido, nome não vazio)
-- Ao confirmar, o sistema exibe um indicador de progresso durante o processo de salvamento
-- Uma confirmação visual clara (ícone de check verde com animação) e textual ("Visita registrada com sucesso!") é exibida
-- **Desafio**: O visitante recebe a opção de gerar um crachá digital temporário após o registro bem-sucedido
+#### Estrutura:
 
-**Definição de Pronto:**
+- Cabeçalho com título e links para o Bootstrap e ícones.
+- Uma área central com um botão que aciona o processo de cadastro.
+- Mensagem de acesso negado em caso de falha na verificação de localização ou permissão de câmera.
+- Rodapé com aviso de direitos autorais.
 
-- O registro é salvo no banco de dados com timestamp automático
-- A interface é responsiva e funciona em dispositivos iOS e Android
+### 2. Formulário de Visita
 
-**Prioridade:** Alta
+A segunda página (`formulario.html`) exibe o formulário de cadastro de visita, incluindo a captura de uma foto através da câmera do visitante.
 
+#### Funcionalidades:
+
+- **Captura de Foto**: A página ativa a câmera do visitante e exibe um preview. O visitante pode tirar uma foto, que será exibida como imagem de perfil.
+- **Formulário**: O visitante preenche informações como nome, e-mail, empresa (opcional) e motivo da visita (opcional).
+- **Submissão**: Após o preenchimento, o formulário pode ser enviado para registrar a visita.
+- **Confirmação**: Após o envio, uma barra de progresso é exibida e, ao final, uma mensagem de sucesso é mostrada.
+
+#### Estrutura:
+
+- Um vídeo com preview da câmera do visitante e um botão para tirar a foto.
+- Campos para nome, e-mail, empresa e motivo da visita.
+- Botões para capturar a foto e reenviar a foto, caso necessário.
+- Mensagens de sucesso e de confirmação após o envio do formulário.
+- Contagem regressiva para recarregar a página após o sucesso.
+
+### 3. Crachá Digital
+
+A última página (`cracha.html`) exibe o crachá digital do visitante, com as informações coletadas no formulário.
+
+#### Funcionalidades:
+
+- Exibe o nome, e-mail, empresa e foto do visitante.
+- Foto de perfil capturada durante o cadastro.
+- Design simples com informações do visitante centralizadas.
+
+#### Estrutura:
+
+- Cabeçalho com o título "VISITANTE".
+- Exibição da foto, nome, e-mail e empresa do visitante.
+
+## Arquivos de Estilo
+
+O projeto utiliza três arquivos CSS principais, sendo:
+
+- **`style.css`**: Estiliza a página inicial de acesso.
+- **`formulario.css`**: Estiliza a página de formulário de visita.
+- **`cracha.css`**: Estiliza o crachá digital.
+
+## Scripts JavaScript
+
+O projeto também inclui três arquivos JavaScript principais:
+
+- **`script.js`**: Controla a lógica de acesso à página de cadastro de visita e a verificação de localização.
+- **`formulario.js`**: Controla a captura da foto, a validação do formulário e o envio das informações.
+- **`cracha.js`**: Gerencia a exibição dos dados no crachá digital.
+
+## Como Usar
+
+1. **Abra a página inicial** (`index.html`).
+2. **Clique no botão "Realizar Cadastro de Visita"** para começar o processo de cadastro.
+3. **Permita o acesso à sua câmera** e verifique sua localização.
+4. **Preencha o formulário de visita** com as informações solicitadas.
+5. Após o envio, **gerencie o crachá digital** na página de crachá.
+
+## Tecnologias Utilizadas
+
+- HTML
+- CSS
+- JavaScript
+- Bootstrap 5
+- Supabase (para manipulação de dados, se necessário)
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT.
+
+---
+
+**Fábrica de Software - Todos os direitos reservados**
