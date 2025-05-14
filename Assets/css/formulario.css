@@ -1,111 +1,110 @@
 body {
-    background: #f5f8fa;
-    font-family: "Segoe UI", sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  background: #f5f8fa;
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background-color: #006241; /* Verde escuro do IFC */
+  padding: 0.9rem;
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+}
+
+.form-container {
+  max-width: 480px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#camera-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1rem auto;
+}
+
+#camera-preview,
+#captured-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#canvas {
+  display: none;
+}
+
+#check-icon {
+  font-size: 4rem;
+  color: #006241; /* Verde escuro do IFC para o ícone de check */
+  display: none;
+  animation: pop 0.5s ease-in-out forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
   }
-  
-  nav {
-    background-color: #0a282d;
-    padding: 0.9rem;
-    color: white;
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: bold;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
+}
+
+footer {
+  background-color: #006241; /* Verde escuro do IFC */
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
   main {
-    flex: 1;
+    align-items: center;
   }
-  
+
   .form-container {
-    max-width: 480px;
-    margin: 2rem auto;
-    background: white;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  #camera-wrapper {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 1rem auto;
-  }
-  
-  #camera-preview,
-  #captured-photo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  #canvas {
-    display: none;
-  }
-  
-  #check-icon {
-    font-size: 4rem;
-    color: green;
-    display: none;
-    animation: pop 0.5s ease-in-out forwards;
-  }
-  
-  @keyframes pop {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  footer {
-    background-color: #0a282d;
-    color: white;
-    text-align: center;
-    width: 100%;
+    margin: 1rem 0.5rem;
     padding: 1rem;
   }
-  
-  @media (max-width: 768px) {
-    main {
-      align-items: center;
-    }
-  
-    .form-container {
-      margin: 1rem 0.5rem;
-      padding: 1rem;
-    }
-  
-    #camera-wrapper {
-      width: 140px;
-      height: 140px;
-    }
-  
-    #camera-preview,
-    #captured-photo {
-      width: 140px;
-      height: 140px;
-    }
-  
-    nav {
-      font-size: 1.2rem;
-      padding: 0.75rem;
-    }
-  
-    footer {
-      font-size: 0.9rem;
-      padding: 0.8rem;
-    }
+
+  #camera-wrapper {
+    width: 140px;
+    height: 140px;
   }
-  
+
+  #camera-preview,
+  #captured-photo {
+    width: 140px;
+    height: 140px;
+  }
+
+  nav {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}

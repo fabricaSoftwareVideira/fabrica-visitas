@@ -1,63 +1,62 @@
 * {
-    box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, #2899ad, #0a282d);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 1rem;
-  }
-  
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #2e8b57, #006241); /* tons de verde */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.cracha {
+  background-color: #ffffffcc;
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #006241; /* Verde escuro do IFC */
+}
+
+.foto {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #006241; /* Verde escuro do IFC */
+  margin: 0 auto 1.5rem;
+  display: none;
+}
+
+.cracha h1 {
+  margin: 0.3 0.5rem;
+  font-size: 1.8rem;
+  color: #006241; /* Verde escuro do IFC */
+}
+
+.cracha p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #006241; /* Verde escuro do IFC */
+}
+
+@media (max-width: 500px) {
   .cracha {
-    background-color: #ffffffcc;
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    border: 2px solid #0a282d;
+    padding: 1.5rem;
   }
-  
-  .foto {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #0a282d;
-    margin: 0 auto 1.5rem;
-    display: none;
-  }
-  
+
   .cracha h1 {
-    margin: 0.3 0.5rem;
-    font-size: 1.8rem;
-    color: #0a282d;
+    font-size: 1.5rem;
   }
-  
+
   .cracha p {
-    margin: 0.3rem 0;
-    font-size: 1rem;
-    color: #0a282d;
+    font-size: 0.95rem;
   }
-  
-  @media (max-width: 500px) {
-    .cracha {
-      padding: 1.5rem;
-    }
-  
-    .cracha h1 {
-      font-size: 1.5rem;
-    }
-  
-    .cracha p {
-      font-size: 0.95rem;
-    }
-  }
-  
+}
